@@ -93,6 +93,10 @@ The translation layer is deliberately excluded from screen capture, otherwise OC
 - [Contributing](CONTRIBUTING.md): build, test, guidelines
 - [Changelog](CHANGELOG.md)
 
+### License
+
+Copyright (C) 2026 Metehan. Licensed under the [GNU Affero General Public License v3.0](LICENSE). If you run a modified version as a network service, you must offer its source code to its users.
+
 ---
 
 ## Türkçe
@@ -181,3 +185,7 @@ Testler: `tools\SelfTest` bir test penceresi açar. Bu pencerede UI Automation v
 - [Sorun giderme](docs/TROUBLESHOOTING.md): sunucu, kısayollar, OCR ve günlük dosyaları
 - [Katkı](CONTRIBUTING.md): derleme, test ve kurallar
 - [Değişiklikler](CHANGELOG.md)
+
+### Lisans
+
+Telif (C) 2026 Metehan. [GNU Affero Genel Kamu Lisansı v3.0](LICENSE) altında lisanslıdır. Değiştirilmiş sürümü ağ üzerinden bir hizmet olarak çalıştırırsanız, kaynak kodunu o hizmeti kullanan kişilere sunmak zorundasınız.
