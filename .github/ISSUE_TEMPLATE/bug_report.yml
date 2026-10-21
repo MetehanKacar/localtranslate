@@ -1,0 +1,61 @@
+name: Bug report
+description: Something does not work as described
+labels: [bug]
+body:
+  - type: markdown
+    attributes:
+      value: |
+        Teşekkürler! / Thanks! Please fill in as much as you can.
+        Hata günlüğünü (`%APPDATA%\LocalTranslate\error.log`) ekleyin / attach the relevant part of the error log.
+  - type: textarea
+    id: what
+    attributes:
+      label: What happened? / Ne oldu?
+      description: What you did, what you expected, and what happened instead.
+    validations:
+      required: true
+  - type: dropdown
+    id: mode
+    attributes:
+      label: Mode / Mod
+      options:
+        - Hover translation / Üzerine gelince
+        - Selection translation / Seçince
+        - Whole-screen translation / Tüm ekran
+        - Screen text selection / Ekrandan metin seç
+        - Other / Diğer
+    validations:
+      required: true
+  - type: input
+    id: app
+    attributes:
+      label: Application where it happened / Uygulama
+      placeholder: e.g. Chrome, Word, a game, Figma
+    validations:
+      required: true
+  - type: input
+    id: windows
+    attributes:
+      label: Windows version / Windows sürümü
+      placeholder: e.g. Windows 11 23H2
+    validations:
+      required: true
+  - type: input
+    id: version
+    attributes:
+      label: LocalTranslate version / Sürüm
+      placeholder: e.g. 1.0.0
+    validations:
+      required: true
+  - type: textarea
+    id: logs
+    attributes:
+      label: Error log / Hata günlüğü
+      render: text
+  - type: checkboxes
+    id: checks
+    attributes:
+      label: Checks / Kontroller
+      options:
+        - label: LibreTranslate responds at http://localhost:5000/languages
+        - label: I read the troubleshooting guide / Sorun giderme rehberini okudum

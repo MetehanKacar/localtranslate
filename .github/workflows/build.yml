@@ -1,0 +1,41 @@
+name: Build
+
+on:
+  push:
+    branches: [main]
+    tags: ["v*"]
+  pull_request:
+  workflow_dispatch:
+
+permissions:
+  contents: read
+
+jobs:
+  build:
+    runs-on: windows-latest
+    steps:
+      - uses: actions/checkout@v4
+
+      - uses: actions/setup-dotnet@v4
+        with:
+          dotnet-version: "10.0.x"
+
+      - name: Restore
+        run: dotnet restore LocalTranslate.csproj
+
+      - name: Build
+        run: dotnet build LocalTranslate.csproj -c Release --no-restore
+
+      - name: Publish single-file exe
+        run: >
+          dotnet publish LocalTranslate.csproj -c Release -r win-x64
+          --self-contained true -p:PublishSingleFile=true
+          -p:IncludeNativeLibrariesForSelfExtract=true
+          -p:EnableCompressionInSingleFile=true -p:DebugType=none
+          -o dist
+
+      - uses: actions/upload-artifact@v4
+        with:
+          name: LocalTranslate-${{ github.sha }}
+          path: dist/LocalTranslate.exe
+          if-no-files-found: error

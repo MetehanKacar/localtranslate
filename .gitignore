@@ -1,0 +1,17 @@
+# Build output
+bin/
+obj/
+dist/
+publish/
+**/bin/
+**/obj/
+
+# Test screenshots and dumps
+**/e2e/
+
+# Visual Studio / Rider
+.vs/
+.idea/
+*.user
+*.suo
+

@@ -1,0 +1,78 @@
+<Window x:Class="LocalTranslate.UI.SettingsWindow"
+        xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+        xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+        Width="440" SizeToContent="Height" ResizeMode="NoResize"
+        WindowStartupLocation="CenterScreen"
+        FontFamily="Segoe UI" FontSize="13">
+    <Window.Resources>
+        <Style x:Key="Heading" TargetType="TextBlock">
+            <Setter Property="FontWeight" Value="SemiBold"/>
+            <Setter Property="Margin" Value="0,16,0,5"/>
+        </Style>
+        <Style x:Key="Hint" TargetType="TextBlock">
+            <Setter Property="Foreground" Value="#6B7280"/>
+            <Setter Property="FontSize" Value="12"/>
+            <Setter Property="TextWrapping" Value="Wrap"/>
+        </Style>
+        <Style TargetType="TextBox">
+            <Setter Property="Padding" Value="4,3"/>
+        </Style>
+    </Window.Resources>
+
+    <StackPanel Margin="22,8,22,20">
+        <TextBlock x:Name="LanguageHeading" Style="{StaticResource Heading}"/>
+        <ComboBox x:Name="UiLanguageBox" DisplayMemberPath="Label" SelectedValuePath="Code" Padding="6,4"/>
+
+        <TextBlock x:Name="TargetHeading" Style="{StaticResource Heading}"/>
+        <ComboBox x:Name="TargetBox" DisplayMemberPath="Label" SelectedValuePath="Code" Padding="6,4"/>
+        <TextBlock x:Name="SourceHint" Style="{StaticResource Hint}" Margin="0,4,0,0"/>
+
+        <TextBlock x:Name="MethodsHeading" Style="{StaticResource Heading}"/>
+        <CheckBox x:Name="HoverBox"/>
+        <DockPanel Margin="22,8,0,0">
+            <TextBlock x:Name="DelayText" DockPanel.Dock="Right" Foreground="#6B7280"/>
+            <TextBlock x:Name="DelayLabel"/>
+        </DockPanel>
+        <Slider x:Name="DelaySlider" Minimum="150" Maximum="2000" TickFrequency="50"
+                IsSnapToTickEnabled="True" Margin="22,4,0,0"/>
+        <CheckBox x:Name="SelectionBox" Margin="0,10,0,0"/>
+
+        <TextBlock x:Name="FallbackHeading" Style="{StaticResource Heading}"/>
+        <CheckBox x:Name="OcrBox"/>
+        <CheckBox x:Name="ClipboardBox" Margin="0,6,0,0"/>
+        <TextBlock x:Name="ClipboardHint" Style="{StaticResource Hint}" Margin="22,3,0,0"/>
+
+        <TextBlock x:Name="ShortcutsHeading" Style="{StaticResource Heading}"/>
+        <Grid>
+            <Grid.ColumnDefinitions>
+                <ColumnDefinition Width="*"/>
+                <ColumnDefinition Width="150"/>
+            </Grid.ColumnDefinitions>
+            <Grid.RowDefinitions>
+                <RowDefinition/>
+                <RowDefinition/>
+                <RowDefinition/>
+            </Grid.RowDefinitions>
+            <TextBlock x:Name="ToggleLabel" VerticalAlignment="Center"/>
+            <TextBox x:Name="HotkeyBox" Grid.Column="1" IsReadOnly="True" PreviewKeyDown="HotkeyBox_PreviewKeyDown"/>
+            <TextBlock x:Name="ScreenLabel" Grid.Row="1" VerticalAlignment="Center" Margin="0,6,0,0"/>
+            <TextBox x:Name="ScreenHotkeyBox" Grid.Row="1" Grid.Column="1" Margin="0,6,0,0" IsReadOnly="True" PreviewKeyDown="HotkeyBox_PreviewKeyDown"/>
+            <TextBlock x:Name="RegionLabel" Grid.Row="2" VerticalAlignment="Center" Margin="0,6,0,0"/>
+            <TextBox x:Name="RegionHotkeyBox" Grid.Row="2" Grid.Column="1" Margin="0,6,0,0" IsReadOnly="True" PreviewKeyDown="HotkeyBox_PreviewKeyDown"/>
+        </Grid>
+        <TextBlock x:Name="ShortcutHint" Style="{StaticResource Hint}" Margin="0,4,0,0"/>
+
+        <TextBlock x:Name="ServerHeading" Style="{StaticResource Heading}"/>
+        <TextBox x:Name="ServerBox"/>
+        <TextBlock x:Name="ApiKeyLabel" Margin="0,8,0,4"/>
+        <TextBox x:Name="ApiKeyBox"/>
+        <TextBlock x:Name="StatusText" Margin="0,6,0,0" FontSize="12" TextWrapping="Wrap"/>
+
+        <CheckBox x:Name="StartupBox" Margin="0,18,0,0"/>
+
+        <StackPanel Orientation="Horizontal" HorizontalAlignment="Right" Margin="0,20,0,0">
+            <Button x:Name="CancelButton" Width="92" Padding="0,5" IsCancel="True" Margin="0,0,8,0"/>
+            <Button x:Name="SaveButton" Width="92" Padding="0,5" IsDefault="True" Click="Save_Click"/>
+        </StackPanel>
+    </StackPanel>
+</Window>
